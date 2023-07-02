@@ -1,3 +1,5 @@
+/*Sum of the digit of any Number*/
+
 #include<stdio.h>
 #include<conio.h>
 
