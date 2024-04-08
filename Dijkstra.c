@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #define INFINITY 9999
-#define MAX_NODES 100
+#define MAX_NODES 9
 
 void dijkstra(int graph[MAX_NODES][MAX_NODES], int start, int numNodes) {
     int distances[MAX_NODES];
