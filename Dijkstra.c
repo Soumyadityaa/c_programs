@@ -21,9 +21,9 @@ void dijkstra(int graph[MAX_NODES][MAX_NODES], int start, int numNodes) {
             }
         }
     }
-    
+    printf("Shortest distance from \n");
     for (int i = 0; i < numNodes; i++) {
-        printf("Shortest distance from %d to %d: %d\n", start, i, distances[i]);
+        printf("%d to %d: %d\n", start, i, distances[i]);
     }
 }
 
