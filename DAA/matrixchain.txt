@@ -1,0 +1,78 @@
+Source code of matrix chain multiplication:-  
+ 
+ 
+# include <stdio.h>
+# include <conio.h>
+# include <stdlib.h>
+# define sz 20
+# define INF 200000
+void print(unsigned long z[][sz], int i, int j)
+{
+if (i == j)
+printf(" A%d ",i);
+else
+{
+printf(" ( ");
+print(z, i, z[i][j]);
+print(z, z[i][j] + 1, j);
+printf(" ) ");
+}
+}
+void printm(unsigned long z[][sz], int n)
+{
+int i,j;
+for(i=1;i<=n;i++)
+{
+for(j=1;j<=n;j++)
+{
+printf("%5d",z[i][j]);
+}
+printf("\n\n");
+}
+printf("\nThe No. of multiplication required is : %d",z[1][n]);
+}
+void Matrix_Chain_Order(int w[],int num1)
+{
+unsigned long x[sz][sz] = {0};
+unsigned long z[sz][sz] = {0};
+unsigned int q = 0;
+int i, j, k, l;
+int n = num1;
+for(i = 1; i <= n; i++)
+x[i][i] = 0;
+for(l = 2; l <= n; l++)
+for(i = 1; i <= (n - l + 1); i++)
+{
+j = i + l - 1;
+x[i][j] = INF;
+for(k = i; k <= j - 1; k++)
+{
+q = x[i][k] + x[k+1][j] + w[i-1] * w[k] * w[j];
+if(q < x[i][j])
+{
+x[i][j] = q;
+z[i][j] = k;
+}
+}
+}
+print(z, i-1, j);
+printf("\n\n");
+printf("The Minimum No. of Multiplication Required is:\n\n");
+printm(x,n);
+}
+
+void main()
+{
+int i,num1=0,w[sz]={0};
+clrscr();
+printf("Enter the number of matrix : ");
+scanf("%d",&num1);
+printf("Enter the order of sequence for %d matrix Multiplication :\n",num1+1,num1);
+for(i=0;i<=num1;i++)
+scanf("%d",&w[i]);
+printf("\n\n");
+printf("MATRIX MULTIPLICATION SEQUENCE IS : ");
+printf("\n\n\t");
+Matrix_Chain_Order(w,num1);
+getch();
+}
